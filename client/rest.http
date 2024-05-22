@@ -1,0 +1,42 @@
+###  health check
+GET http://localhost:5000/health-check HTTP/1.1
+
+### additon calculation
+POST http://localhost:5000/api/v1/calculation HTTP/1.1
+Content-Type: application/json
+
+{
+    "number1": 10,
+    "number2": 50,
+    "operation": "addition"
+}
+
+### subtraction calculation
+POST http://localhost:5000/api/v1/calculation HTTP/1.1
+Content-Type: application/json
+
+{
+    "number1": 10,
+    "number2": 50,
+    "operation": "subtraction"
+}
+
+### multiplication calculation
+POST http://localhost:5000/api/v1/calculation HTTP/1.1
+Content-Type: application/json
+
+{
+    "number1": 10,
+    "number2": 50,
+    "operation": "multiplication"
+}
+
+### division calculation
+POST http://localhost:5000/api/v1/calculation HTTP/1.1
+Content-Type: application/json
+
+{
+    "number1": 100,
+    "number2": 10,
+    "operation": "division"
+}
