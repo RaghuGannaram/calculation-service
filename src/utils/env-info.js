@@ -1,38 +1,23 @@
 import { LogLevel } from "../constants/index.js";
 
 export function getClientURL() {
-    const clientDevURL = process.env["CLIENT_DEV_URL"];
-    const clientProdURL = process.env["CLIENT_PROD_URL"];
-
-    return process.env["NODE_ENV"] === "production" ? clientProdURL : clientDevURL;
+    return process.env["CLIENT_URL"];
 }
 
 export function getAdditionServiceURL() {
-    const additionServiceDevURL = process.env["ADDITION_SERVICE_DEV_URL"];
-    const additionServiceProdURL = process.env["ADDITION_SERVICE_PROD_URL"];
-
-    return process.env["NODE_ENV"] === "production" ? additionServiceProdURL : additionServiceDevURL;
+    return process.env["ADDITION_SERVICE_URL"];
 }
 
 export function getSubtractionServiceURL() {
-    const subtractionServiceDevURL = process.env["SUBTRACTION_SERVICE_DEV_URL"];
-    const subtractionServiceProdURL = process.env["SUBTRACTION_SERVICE_PROD_URL"];
-
-    return process.env["NODE_ENV"] === "production" ? subtractionServiceProdURL : subtractionServiceDevURL;
+    return process.env["SUBTRACTION_SERVICE_URL"];
 }
 
 export function getMultiplicationServiceURL() {
-    const multiplicationServiceDevURL = process.env["MULTIPLICATION_SERVICE_DEV_URL"];
-    const multiplicationServiceProdURL = process.env["MULTIPLICATION_SERVICE_PROD_URL"];
-
-    return process.env["NODE_ENV"] === "production" ? multiplicationServiceProdURL : multiplicationServiceDevURL;
+    return process.env["MULTIPLICATION_SERVICE_URL"];
 }
 
 export function getDivisionServiceURL() {
-    const divisionServiceDevURL = process.env["DIVISION_SERVICE_DEV_URL"];
-    const divisionServiceProdURL = process.env["DIVISION_SERVICE_PROD_URL"];
-
-    return process.env["NODE_ENV"] === "production" ? divisionServiceProdURL : divisionServiceDevURL;
+    return process.env["DIVISION_SERVICE_URL"];
 }
 
 export function getCurrentEnv() {

@@ -3,7 +3,7 @@ export const DataErrors = {
     AXIOS_REQUEST_ABORTED: "AXIOS_REQUEST_ABORTED",
     AXIOS_DNS_LOOKUP_FAILED: "AXIOS_DNS_LOOKUP_FAILED",
     AXIOS_CONNECTION_TIMED_OUT: "AXIOS_CONNECTION_TIMED_OUT",
-    AXIOS_NETWORK_UNREACHABLE: "AXIOS_NETWORK_UNREACHABLE",
+    AXIOS_HOST_UNREACHABLE: "AXIOS_HOST_UNREACHABLE",
     AXIOS_BROKEN_PIPE: "AXIOS_BROKEN_PIPE",
     AXIOS_CONNECTION_RESET: "AXIOS_CONNECTION_RESET",
     AXIOS_NETWORK_UNREACHABLE: "AXIOS_NETWORK_UNREACHABLE",
@@ -15,6 +15,7 @@ export const DataErrors = {
 
 export const BusinessErrors = {
     VALIDATION_FAILURE: "VALIDATION_FAILURE",
+    MICROSERVICE_FAILURE: "MICROSERVICE_FAILURE",
     OTHER_DATA_ERROR: "OTHER_DATA_ERROR",
     UNKNOWN_BUSINESS_ERROR: "UNKNOWN_BUSINESS_ERROR",
 };
@@ -52,12 +53,23 @@ export const HttpErrorCode = {
 };
 
 export const BusinessErrorMap = {
+    [DataErrors.AXIOS_CONNECTION_REFUSED]: BusinessErrors.MICROSERVICE_FAILURE,
+    [DataErrors.AXIOS_REQUEST_ABORTED]: BusinessErrors.MICROSERVICE_FAILURE,
+    [DataErrors.AXIOS_DNS_LOOKUP_FAILED]: BusinessErrors.MICROSERVICE_FAILURE,
+    [DataErrors.AXIOS_CONNECTION_TIMED_OUT]: BusinessErrors.MICROSERVICE_FAILURE,
+    [DataErrors.AXIOS_HOST_UNREACHABLE]: BusinessErrors.MICROSERVICE_FAILURE,
+    [DataErrors.AXIOS_BROKEN_PIPE]: BusinessErrors.MICROSERVICE_FAILURE,
+    [DataErrors.AXIOS_CONNECTION_RESET]: BusinessErrors.MICROSERVICE_FAILURE,
+    [DataErrors.AXIOS_NETWORK_UNREACHABLE]: BusinessErrors.MICROSERVICE_FAILURE,
+    [DataErrors.AXIOS_DNS_LOOKUP_TIMED_OUT]: BusinessErrors.MICROSERVICE_FAILURE,
+    [DataErrors.AXIOS_UNKOWN_ERROR]: BusinessErrors.MICROSERVICE_FAILURE,
     [DataErrors.AXIOS_BAD_REQUEST]: BusinessErrors.VALIDATION_FAILURE,
     [DataErrors.UNKNOWN_DATA_ERROR]: BusinessErrors.OTHER_DATA_ERROR,
 };
 
 export const HttpErrorMap = {
     [BusinessErrors.VALIDATION_FAILURE]: HttpErrors.BAD_REQUEST,
+    [BusinessErrors.MICROSERVICE_FAILURE]: HttpErrors.SERVICE_UNAVAILABLE,
     [BusinessErrors.OTHER_DATA_ERROR]: HttpErrors.INTERNAL_SERVER_ERROR,
     [BusinessErrors.UNKNOWN_BUSINESS_ERROR]: HttpErrors.INTERNAL_SERVER_ERROR,
 };
@@ -132,9 +144,9 @@ export function processAxiosError(err) {
                 });
 
             case "EHOSTUNREACH":
-                throw new DataError(DataErrors.AXIOS_NETWORK_UNREACHABLE, {
-                    name: "NetworkError",
-                    message: "Network unreachable: The server is unreachable due to network issues.",
+                throw new DataError(DataErrors.AXIOS_HOST_UNREACHABLE, {
+                    name: "HostError",
+                    message: "Host unreachable: The server is unreachable due to network issues.",
                     code: err.code,
                 });
 
