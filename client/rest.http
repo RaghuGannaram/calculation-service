@@ -82,6 +82,6 @@ Content-Type: application/json
 
 {
     "number1": 100,
-    "number2": 10,
+    "number2": 0,
     "operation": "division"
 }

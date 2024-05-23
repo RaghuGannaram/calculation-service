@@ -9,7 +9,7 @@ RUN npm install
 COPY ./ ./
 
 ENV NODE_ENV=production
-ENV PORT=5900
+ENV PORT=9000
 ENV CLIENT_URL="*"
 ENV ADDITION_SERVICE_URL="http://addition-service:9001/api/v1/addition"
 ENV SUBTRACTION_SERVICE_URL="http://subtraction-service:9002/api/v1/subtraction"
