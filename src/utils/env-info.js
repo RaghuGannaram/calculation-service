@@ -1,4 +1,5 @@
 import { LogLevel } from "../constants/index.js";
+import { ErrorExposureDepth } from "../constants/index.js";
 
 export function getClientURL() {
     return process.env["CLIENT_URL"];
@@ -33,5 +34,5 @@ export function getLogLevel() {
 }
 
 export function getErrorExposureDepth() {
-    return process.env["ERROR_EXPOSURE_DEPTH"] || "BUSINESS";
+    return process.env["ERROR_EXPOSURE_DEPTH"] || ErrorExposureDepth.BUSINESS;
 }
