@@ -11,6 +11,7 @@ docker container run \
 > --publish 9000:9000 \
 > --network calculation-microservices-network \
 > --env LOG_LEVEL=debug \
+> --mount type=bind,source="$(pwd)/Docker/logs",target=/app/logs \
 > raghugannaram/calculation-service:1.0.0
 
 ```
